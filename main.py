@@ -7,6 +7,10 @@ class JanelaGerenciadora(ScreenManager):
     pass
 
 
+class TelaDePerfis(Screen):
+    pass
+
+
 class PerfisdeExtracao(Screen):
     pass
 
