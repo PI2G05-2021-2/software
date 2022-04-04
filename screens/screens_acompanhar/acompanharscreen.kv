@@ -1,0 +1,105 @@
+<AcompanharScreen>:
+    name: "acompanhar"
+    MDScreen:
+        FloatLayout:
+            MDFillRoundFlatButton:
+                text: "INFORMAÇÕES"
+                size_hint_x: 0.6
+                center_x: 0.5
+                pos_hint: {"center_x":.5,'center_y': 0.9}
+                md_bg_color: utils.get_color_from_hex('#C7E9C7')
+            MDIconButton:
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color 
+                pos_hint: {'x': .9, "y": 0.9}
+                on_release: sm.current = 'perfis'
+            MDCard:
+                size_hint:None,None
+                size: "325dp","350dp"
+                pos_hint:{"center_x":0.5, "center_y":0.5}
+                radius: 25
+                elevation: 6
+                GridLayout:
+                    radius: 20
+                    cols: 2
+                    padding:dp(20)
+                    spacing:dp(20)
+                    MDCard:
+                        orientation: "vertical"
+                        MDLabel:
+                            size_hint_y: .3
+                            text: "TEMPERATURA"
+                            halign: "center"
+                        MDCard:
+                            md_bg_color: app.theme_cls.primary_color
+                            size_hint_y: .7
+                            size_hint_x: .3
+                            size_hint: None, None
+                            size: "100dp", "100dp"
+                            radius: 50
+                            halign: 'center'
+                            pos_hint:{"x": 0.2}
+                            MDLabel:
+                                text: "50C"
+                                halign: 'center'                            
+                    MDCard:
+                        size:None, None
+                        size:"150dp", "150dp"
+                        orientation: "vertical"
+                        MDLabel:
+                            size_hint_y: .3
+                            text: "TEMPERATURA"
+                            halign: "center"
+                        MDCard:
+                            md_bg_color: app.theme_cls.primary_color
+                            size_hint_y: .7
+                            size_hint_x: .3
+                            size_hint: None, None
+                            size: "100dp", "100dp"
+                            radius: 50
+                            halign: 'center'
+                            pos_hint:{"x": 0.2}
+                            MDLabel:
+                                text: "50C"
+                                halign: 'center'
+                    MDCard:
+                        orientation: "vertical"
+                        MDLabel:
+                            size_hint_y: .3
+                            text: "TEMPO"
+                            halign: "center"
+                        MDCard:
+                            md_bg_color: app.theme_cls.primary_color
+                            size_hint_y: .7
+                            size_hint_x: .3
+                            size_hint: None, None
+                            size: "100dp", "100dp"
+                            radius: 50
+                            halign: 'center'
+                            pos_hint:{"x": 0.2}
+                            MDLabel:
+                                text: "50C"
+                                halign: 'center'
+                    MDCard:
+                        orientation: "vertical"
+                        MDLabel:
+                            size_hint_y: .3
+                            text: "VELOCIDADEDO MOTOR"
+                            halign: "center"
+                            spacing: "5"
+
+                        MDCard:
+                            paddinh:dp(5)
+                            spacing:dp(5)
+                            md_bg_color: app.theme_cls.primary_color
+                            size_hint_y: .5
+                            size_hint_x: .8
+                            size_hint: None, None
+                            size: "100dp", "100dp"
+                            radius: 50
+                            halign: 'center'
+                            pos_hint:{"x": 0.2, 'center_y':0.5}
+                            MDLabel:
+                                text: "50C"
+                                halign: 'center'
