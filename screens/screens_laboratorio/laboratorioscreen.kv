@@ -1,0 +1,80 @@
+
+<LaboratorioScreen>:
+    name: 'perfis'
+    MDScreen:
+
+        BoxLayout:
+            orientation: 'vertical'
+            MDIconButton:
+                icon: "alpha-i-circle"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color 
+                pos_hint: {'x': .9}
+                on_release: sm.current = 'informacoes'
+            MDFillRoundFlatButton:
+                text: "PERFIS DE EXTRACAO"
+                size_hint_x: 0.6
+                center_x: 0.5
+                pos_hint: {'center_x': 0.5,'center_y': 0.9}
+            FloatLayout:
+                size: root.width, root.height
+                MDCard:
+                    on_release: sm.current = 'acompanhar'
+                    ripple_behavior: True
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+                    pos_hint: {"x": 0.1, "y": 0.6}
+                    elevation: 6
+                    radius: 20
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_y: .7
+                        font_size: "100sp"
+                        halign: "center"
+                    MDLabel:
+                        text: "PERFIL 1"
+                        halign: "center"
+                        size_hint_y: .3
+                MDCard:
+                    on_release: sm.current = 'acompanhar'
+                    ripple_behavior: True
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+                    pos_hint: {"x": 0.55, "y": 0.6}
+                    elevation: 6
+                    radius: 20
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_y: .7
+                        font_size: "100sp"
+                        halign: "center"
+                    MDLabel:
+                        text: "PERFIL 2"
+                        halign: "center"
+                        size_hint_y: .3
+                MDCard:
+                    on_release: sm.current = 'acompanhar'
+                    ripple_behavior: True
+                    orientation: "vertical"
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+                    pos_hint: {"x": 0.3, "y": 0.3}
+                    elevation: 6
+                    radius: 20
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_y: .7
+                        font_size: "100sp"
+                        halign: "center"
+                    MDLabel:
+                        text: "PERFIL 3"
+                        halign: "center"
+                        size_hint_y: .3

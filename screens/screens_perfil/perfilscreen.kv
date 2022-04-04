@@ -1,0 +1,104 @@
+<PerfilScreen>:
+    name: "informacoes"
+
+    MDScreen:
+
+        BoxLayout:
+            orientation: 'vertical'
+            MDIconButton:
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color 
+                pos_hint: {'x': .9}
+                on_release: sm.current = 'perfis'
+            MDFillRoundFlatButton:
+                text: "INFORMAÇÕES"
+                size_hint_x: 0.6
+                center_x: 0.5
+                pos_hint: {'center_x': 0.5,'center_y': 0.9}
+            MDFloatLayout:
+                size: root.width, root.height
+                MDCard:
+                    size_hint: None, None
+                    size: "350dp", "150dp"
+                    radius: 20
+                    pos_hint:{"x": 0.1, "y": 0.70}
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_x: .3
+                        font_size: "100sp"                    
+                    GridLayout:
+                        cols:2
+                        size_hint_x: .7
+                        
+                        MDLabel:
+                            text: "TEMPERATURA"
+                            font_size: 12
+                        MDLabel:
+                            text: "POTENCIA"
+                            font_size: 12
+                        MDLabel:
+                            text: "VELOCIDADE DO MOTOR"
+                            font_size: 12
+                        MDLabel:
+                            text: "TEMPO"
+                            font_size: 12
+                MDCard:
+                    size_hint: None, None
+                    size: "350dp", "150dp"
+                    radius: 20
+                    pos_hint:{"x": 0.1, "y": 0.45}
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_x: .3
+                        font_size: "100sp"                    
+                    GridLayout:
+                        cols:2
+                        size_hint_x: .7
+                        
+                        MDLabel:
+                            text: "TEMPERATURA"
+                            font_size: 12
+                        MDLabel:
+                            text: "POTENCIA"
+                            font_size: 12
+                        MDLabel:
+                            text: "VELOCIDADE DO MOTOR"
+                            font_size: 12
+                        MDLabel:
+                            text: "TEMPO"
+                            font_size: 12
+                           
+                
+                MDCard:
+                    size_hint: None, None
+                    size: "350dp", "150dp"
+                    radius: 20
+                    pos_hint:{"x": 0.1, "y": 0.20}
+                    MDIcon:
+                        icon: "account-circle"
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.primary_color
+                        size_hint_x: .3
+                        font_size: "100sp"                    
+                    GridLayout:
+                        cols:2
+                        size_hint_x: .7
+                        
+                        MDLabel:
+                            text: "TEMPERATURA"
+                            font_size: 12
+                        MDLabel:
+                            text: "POTENCIA"
+                            font_size: 12
+                        MDLabel:
+                            text: "VELOCIDADE DO MOTOR"
+                            font_size: 12
+                        MDLabel:
+                            text: "TEMPO"
+                            font_size: 12
+
