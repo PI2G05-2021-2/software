@@ -207,6 +207,107 @@
     name: "acompanhar"
 
     MDScreen:
-        MDLabel:
-            text:" AAAAAAAAAAAAAAAAAAAAA"
-            halign: 'center'
+        MDCard:
+            size_hint: None, None
+            size: "350dp", "350dp"
+            radius: 20
+            pos_hint:{"x": 0.08, "y": 0.30}
+            GridLayout:
+                cols: 2
+                BoxLayout:
+                    padding: 20
+                    spacing: 20
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "TEMPERATURA"
+                        halign: 'center'
+                    MDCard:
+                        size_hint: None,None
+                        radius: 50
+                        md_bg_color: app.theme_cls.primary_color
+                        pos_hint:{"center_x":.5}
+                        MDLabel:
+                            text: "50C"
+                            halign: 'center'
+                BoxLayout:
+                    padding: 20
+                    spacing: 20
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "TEMPO"
+                        halign: 'center'
+                    MDCard:
+                        size_hint: None,None
+                        radius: 50
+                        md_bg_color: app.theme_cls.primary_color
+                        pos_hint:{"center_x":.5}
+                        MDLabel:
+                            text: "50C"
+                            halign: 'center'
+                BoxLayout:
+                    padding: 20
+                    spacing: 20
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "POTENCIA"
+                        halign: 'center'
+                    MDCard:
+                        size_hint: None,None
+                        radius: 50
+                        md_bg_color: app.theme_cls.primary_color
+                        pos_hint:{"center_x":.5}
+                        MDLabel:
+                            text: "50C"
+                            halign: 'center'
+                BoxLayout:
+                    padding: 20
+                    spacing: 25
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        
+                        text: "VELOCIDADE DO MOTOR"
+                        halign: 'center'
+                    MDCard:
+                        size_hint: None,None
+                        radius: 50
+                        md_bg_color: app.theme_cls.primary_color
+                        pos_hint:{"center_x":.5}
+                        MDLabel:
+                            text: "50C"
+                            halign: 'center'
+                
+        MDCard:
+            size_hint: None, None
+            size: "250dp", "40dp"
+            radius: 20
+            pos_hint:{'center_x': .5 , 'y':.85}
+            md_bg_color: app.theme_cls.primary_color
+            MDLabel:
+                text: "ACOMPANHAMENTO"
+                halign: 'center'
+        MDIconButton:
+            icon: "arrow-left"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color 
+            pos_hint: {'x': .85, 'y': .92}
+            on_release: root.manager.current = 'perfis'
+        MDProgressBar:
+            type: "determinate"
+            running_duration: 1
+            catching_duration: 1.5 
+            pos_hint: {"center_y": .2}
+        MDRoundFlatIconButton:
+            icon: "plus"
+            text: "ADICIONAR RELATORIO"
+            pos_hint:{"center_y": .1, "center_x": .5}
+        
+
+        
