@@ -23,8 +23,8 @@ class CriaDB():
             passwd = self.senha,
             database = self.base,
         )
-        
-        self.cursordb = self.mydb.cursor()
+
+        self.cursordb = self.mydb.cursor(dictionary=True)
 
         self.cursordb.execute(
             "CREATE DATABASE IF NOT EXISTS pi2_db"

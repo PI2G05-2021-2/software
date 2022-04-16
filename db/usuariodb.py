@@ -1,7 +1,8 @@
+from collections import namedtuple
 from db.criadb import CriaDB
 
 class UsuarioDB:
-    criadb = None
+    criadb: CriaDB
 
     def __init__(self) :
         self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
@@ -27,8 +28,9 @@ class UsuarioDB:
     def encontraUsuario(self, login):
         self.criadb.instanciaDB(
             "SELECT * FROM usuario WHERE login = %(login)s", {'login': login},False)
-        usuario = self.criadb.cursordb.fetchone()
+        dicionario = self.criadb.cursordb.fetchone()
         self.criadb.fechaDB()
+        usuario = namedtuple('usuario', dicionario.keys())(*dicionario.values())
         return usuario
     
     def atualizaUsuario(self,login,senha,tipo):
@@ -44,6 +46,13 @@ class UsuarioDB:
         self.criadb.instanciaDB(
             "SELECT * FROM usuario",None,False
         )
-        usuarios = self.criadb.cursordb.fetchall()
+        dicionario = self.criadb.cursordb.fetchall()
         self.criadb.fechaDB()
+        usuarios = []
+        i = 0
+        while i<len(dicionario):
+            usuario = namedtuple('usuario', dicionario[i].keys())(*dicionario[i].values())
+            usuarios.append(usuario)
+            i = i + 1 
+        
         return usuarios

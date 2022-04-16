@@ -23,13 +23,11 @@ class UsuarioController:
 
     def mostrarUsuario(login):
         db = UsuarioDB()
-        
         usuario = db.encontraUsuario(login)
-        
+               
         return usuario
 
     def listarUsuario():
         db = UsuarioDB()
         usuarios = db.retornaUsuarios()
-
         return usuarios
