@@ -28,7 +28,8 @@ class LiveApp(MDApp, App):
         "LaboratorioScreen": "screens.screens_laboratorio.laboratorioscreen",
         "AcompanharScreen": "screens.screens_acompanhar.acompanharscreen",
         "PerfilScreen": "screens.screens_perfil.perfilscreen",
-
+        "RelatorioScreen": "screens.screens_relatorio.relatorioscreen",
+        "HomeLaboratorioScreen": "screens.screens_laboratorioHome.laboratoriohomescreen",
     }
 
     # auto reload path

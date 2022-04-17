@@ -1,4 +1,5 @@
 #:import utils kivy.utils
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 <LoginScreen>
 
     name: 'direcao'
@@ -15,7 +16,7 @@
                 text: "LABORATORIO"
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
-                on_release:  root.manager.current = 'perfis'
+                on_release:  root.manager.current = 'homelaboratorio'
 
 <LaboratorioScreen>:
     name: 'perfis'
@@ -308,6 +309,89 @@
             icon: "plus"
             text: "ADICIONAR RELATORIO"
             pos_hint:{"center_y": .1, "center_x": .5}
+            on_release: root.manager.current = 'relatorio'
         
 
+<RelatorioScreen>:
+    name: 'relatorio'
+    MDLabel:
+        text: 'CADASTRO DE LOTE'
+        halign: 'center'
+        pos_hint: { 'y': .4}
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color 
+    MDTextField:
+        hint_text: "Identificação do Lote"
+        mode: "rectangle"
+        size_hint_x: .7
+        pos_hint: {'y': .7, "center_x": .5}
+    MDTextField:
+        hint_text: "Responsável pela produção"
+        mode: "rectangle"
+        size_hint_x: .7
+        pos_hint: {'y': .6, "center_x": .5}
+    MDTextField:
+        hint_text: "Local de remessa"
+        mode: "rectangle"
+        size_hint_x: .7
+        pos_hint: {'y': .5, "center_x": .5}
+    MDTextField:
+        hint_text: "Perfil de extração"
+        mode: "rectangle"
+        size_hint_x: .7
+        pos_hint: {'y': .4, "center_x": .5}
+    MDFillRoundFlatButton:
+        text: "CANCELAR"
+        size_hint_x: 0.6
+        center_x: 0.5
+        pos_hint: {'center_x': 0.5,'center_y': 0.2}
+    MDFillRoundFlatButton:
+        text: "ENVIAR"
+        size_hint_x: 0.6
+        center_x: 0.5
+        pos_hint: {'center_x': 0.5,'center_y': 0.1}
+        on_release: root.manager.current = 'homelaboratorio'
+
+<HomeLaboratorioScreen>:
+    name: 'homelaboratorio'
+    MDCard:
+        size_hint: None, None
+        size: "350dp", "150dp"
+        radius: 20
+        pos_hint:{"x": 0.1, "y": 0.75}
+        MDIcon:
+            icon: "account-circle"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            size_hint_x: .3
+            font_size: "100sp"                        
+        MDLabel:
+            text: "Nome do Laboratório"
+            font_size: 15
+            size_hint_x: .7
+            halign: 'center'
+    MDTextField:
+        hint_text: "Pesquisar lote"
+        mode: "rectangle"
+        size_hint_x: .8
+        pos_hint: {'center_x': .5, 'y': .67}
+    MDIcon:
+        icon: "magnify-plus-outline"
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        pos_hint: {"x": .85, "y": .2}
+    OneLineIconListItem:
+        pos_hint: {"center_x": .5, "y":.6}
+        text: "Lote 001"
+        radius: 30
+        IconLeftWidget:
+            icon: "clipboard-search"
+    MDFillRoundFlatButton:
+        text: "CADASTRAR LOTE"
+        size_hint_x: 0.6
+        center_x: 0.5
+        pos_hint: {'center_x': 0.5,'center_y': 0.1}
+        on_release: root.manager.current = 'perfis'
+
         
+            
