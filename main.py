@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivymd.app import MDApp
 from kaki.app import App
 from kivy.factory import Factory
+from kivy.uix.scrollview import ScrollView
 
 Window.size = (414, 736)
 
