@@ -10,7 +10,7 @@
                 text: "EMPRESA"
                 theme_text_color: "Custom"
                 text_color: 0, 0, 1, 1
-                on_press: root.manager.current = 'perfis'
+                on_press: root.manager.current = 'home'
             MDFlatButton:
                 text: "LABORATORIO"
                 theme_text_color: "Custom"
@@ -309,5 +309,20 @@
             text: "ADICIONAR RELATORIO"
             pos_hint:{"center_y": .1, "center_x": .5}
         
-
-        
+<HomeEmpresaScreen>:
+    name: 'home'
+    
+    MDScreen:
+        BoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'x': 0.4,'y': 0.5}
+            MDFlatButton:
+                text: "EMPRE"
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                on_press: root.manager.current = 'home'
+            MDFlatButton:
+                text: "LABORATORIO"
+                theme_text_color: "Custom"
+                text_color: 0, 0, 1, 1
+                on_release:  root.manager.current = 'perfis'
