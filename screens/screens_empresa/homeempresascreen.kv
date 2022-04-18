@@ -1,0 +1,44 @@
+<HomeEmpresaScreen>:
+    name: 'homeempresa'
+
+    MDScreen:
+        MDCard:
+            size_hint: None, None
+            size: "350dp", "150dp"
+            radius: 20
+            pos_hint:{"x": 0.1, "y": 0.75}
+            MDIcon:
+                icon: "account-circle"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                size_hint_x: .3
+                font_size: "100sp"                        
+            MDLabel:
+                text: "Nome da Empresa"
+                font_size: 15
+                size_hint_x: .7
+                halign: 'center'
+        MDTextField:
+            hint_text: "Pesquisar Venda"
+            mode: "rectangle"
+            size_hint_x: .8
+            pos_hint: {'center_x': .5, 'y': .67}
+        MDIcon:
+            icon: "magnify-plus-outline"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.primary_color
+            pos_hint: {"x": .85, "y": .2}
+        OneLineIconListItem:
+            pos_hint: {"center_x": .5, "y":.6}
+            text: "Comprador 001"
+            radius: 30
+            IconLeftWidget:
+                icon: "account-circle"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+        MDFillRoundFlatButton:
+            text: "REGISTRAR VENDA"
+            size_hint_x: 0.6
+            center_x: 0.5
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+            on_release: root.manager.current = 'registro'
