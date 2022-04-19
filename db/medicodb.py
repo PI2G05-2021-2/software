@@ -5,20 +5,7 @@ class MedicoDB:
     criadb: CriaDB
 
     def __init__(self) :
-        self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
-        self.criaTabela()
-
-    def criaTabela(self):
-        self.criadb.instanciaDB(
-            """CREATE TABLE IF NOT EXISTS Medico (
-                idMedico int(5) NOT NULL PRIMARY KEY,
-                crm char(12),
-                telefoneMedico char(12),
-                nomeMedico char(50)
-            );""", None,True
-        )
-        self.criadb.fechaDB()
-        
+        self.criadb = CriaDB()
 
     def insereMedico(self, medico):
         query = "INSERT INTO medico (idMedico,crm,telefoneMedico,nomeMedico) VALUES(%s,%s,%s,%s)"

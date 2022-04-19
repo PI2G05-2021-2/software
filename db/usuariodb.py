@@ -5,19 +5,7 @@ class UsuarioDB:
     criadb: CriaDB
 
     def __init__(self) :
-        self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
-        self.criaTabela()
-
-    def criaTabela(self):
-        self.criadb.instanciaDB(
-            """CREATE TABLE IF NOT EXISTS Usuario (
-                login char(15) PRIMARY KEY,
-                senha char(15),
-                tipo char(1)
-            );""", None,True
-        )
-        self.criadb.fechaDB()
-        
+        self.criadb = CriaDB()
 
     def insereUsuario(self, usuario):
         query = "INSERT INTO usuario (login,senha,tipo) VALUES(%s,%s,%s)"

@@ -5,21 +5,7 @@ class PerfilExtracaoDB:
     criadb: CriaDB
 
     def __init__(self) :
-        self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
-        self.criaTabela()
-
-    def criaTabela(self):
-        self.criadb.instanciaDB(
-            """CREATE TABLE IF NOT EXISTS PerfilExtracao (
-                idPerfil int(5) NOT NULL AUTO_INCREMENT,
-                temperatura double,
-                tempo int,
-                potencia double,
-                velocidade double,
-                PRIMARY KEY (`idPerfil`)
-            )ENGINE=InnoDB AUTO_INCREMENT=10000;""", None,True
-        )
-        self.criadb.fechaDB()
+        self.criadb = CriaDB()
 
     def inserePerfilExtracao(self,perfil):
         query = "INSERT INTO perfilExtracao (temperatura, tempo, potencia, velocidade) VALUES(%s,%s,%s,%s)"

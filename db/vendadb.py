@@ -5,31 +5,13 @@ from db.lotedb import LoteDB
 from db.medicodb import MedicoDB
 from db.usuariodb import UsuarioDB
 from model.venda import Venda
+# import win32api
 
 class VendaDB:
     criadb: CriaDB
 
     def __init__(self) :
-        self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
-        self.criaTabela()
-
-    def criaTabela(self):
-        self.criadb.instanciaDB(
-            """CREATE TABLE IF NOT EXISTS Venda (
-                idVenda int(5) PRIMARY KEY,
-                fk_medico_idMedico int(5),
-                fk_comprador_idComprador int(5),
-                endereco char(100),
-                fk_Usuario_login char(15),
-                fk_Lote_idLote int(5),
-                FOREIGN KEY (fk_medico_idMedico) REFERENCES medico(idMedico),
-                FOREIGN KEY (fk_medico_idComprador) REFERENCES comprador(idComprador),
-                FOREIGN KEY (fk_Usuario_login) REFERENCES Usuario(login),
-                FOREIGN KEY (fk_Lote_idLote) REFERENCES Lote(idLote)
-            );""", None,True
-        )
-        self.criadb.fechaDB()
-        
+        self.criadb = CriaDB()        
 
     def insereVenda(self, venda):
         query = "INSERT INTO venda (idVenda,fk_medico_idMedico,fk_comprador_idComprador,endereco,fk_Usuario_login,fk_Lote_idLote) VALUES(%s,%s,%s,%s,%s,%s)"
@@ -66,9 +48,14 @@ class VendaDB:
         vendas = []
         i = 0
         while i<len(dicionario):
+            # win32api.MessageBox(0, str(dicionario[i]), 'title')
             vendatemp = namedtuple('vendatemp', dicionario[i].keys())(*dicionario[i].values())
-            venda = Venda(vendatemp.idVenda,MedicoDB.encontraMedico(vendatemp.fk_medico_idMedico),CompradorDB.encontraComprador(vendatemp.fk_comprador_idComprador),
-                    vendatemp.endereco,UsuarioDB.encontraUsuario(vendatemp.fk_Usuario_login), LoteDB.encontraLote(vendatemp.fk_Lote_idLote))
+            medico = MedicoDB().encontraMedico(vendatemp.fk_medico_idMedico)
+            comprador = CompradorDB().encontraComprador(vendatemp.fk_comprador_idComprador)
+            usuario = UsuarioDB().encontraUsuario(vendatemp.fk_Usuario_login3)
+            lote = LoteDB().encontraLote(vendatemp.fk_Lote_idLote)
+
+            venda = Venda(vendatemp.idVenda,medico,comprador,vendatemp.endereco,usuario,lote)
             vendas.append(venda)
             i = i + 1 
         

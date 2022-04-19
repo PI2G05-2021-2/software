@@ -8,21 +8,7 @@ class LoteDB:
     criadb: CriaDB
 
     def __init__(self) :
-        self.criadb = CriaDB("localhost","pi2","P.assword123","pi2_db")
-        self.criaTabela()
-
-    def criaTabela(self):
-        self.criadb.instanciaDB(
-            """CREATE TABLE IF NOT EXISTS Lote (
-                idLote int(5) PRIMARY KEY,
-                fk_PerfilExtracao_idPerfil int(5) ,
-                fk_Usuario_login char(15),
-                FOREIGN KEY (fk_PerfilExtracao_idPerfil) REFERENCES PerfilExtracao(idPerfil)
-                FOREIGN KEY (fk_Usuario_login) REFERENCES Usuario(login)
-            );""", None,True
-        )
-        self.criadb.fechaDB()
-        
+        self.criadb = CriaDB()
 
     def insereLote(self, lote):
         query = "INSERT INTO lote (idLote,fk_PerfilExtracao_idPerfil,fk_Usuario_login) VALUES(%s,%s,%s)"
@@ -36,8 +22,8 @@ class LoteDB:
         dicionario = self.criadb.cursordb.fetchone()
         self.criadb.fechaDB()
         lotetemp = namedtuple('lotetemp', dicionario.keys())(*dicionario.values())
-        lote = Lote(lotetemp.idLote,PerfilExtracaoDB.encontraPerfilExtracao(lotetemp.fk_PerfilExtracao_idPerfil),
-                    UsuarioDB.encontraUsuario(lotetemp.fk_Usuario_login))
+        lote = Lote(lotetemp.idLote,PerfilExtracaoDB().encontraPerfilExtracao(lotetemp.fk_PerfilExtracao_idPerfil),
+                    UsuarioDB().encontraUsuario(lotetemp.fk_Usuario_login2))
         return lote
     
     def atualizaLote(self,idLote, perfil, usuario):
