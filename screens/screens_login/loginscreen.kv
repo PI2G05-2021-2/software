@@ -12,23 +12,21 @@
                 source: 'screens/screens_empresa/logo.png'
                 size_hint_y: None
                 height: 150
-            MDFlatButton:
-                text: "EMPRESA"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 1, 1
-                on_press: root.manager.current = 'homeempresa'
-            MDFlatButton:
-                text: "LABORATORIO"
-                theme_text_color: "Custom"
-                text_color: 0, 0, 1, 1
-                on_release:  root.manager.current = 'perfis'
             MDTextField:
+                id: usuarioLogin
                 hint_text: "Usuário"
                 mode: "rectangle"
                 size_hint_x: .7
                 pos_hint: {'y': .1, "center_x": .5}
             MDTextField:
+                id: senhaLogin
                 hint_text: "Senha"
+                mode: "rectangle"
+                size_hint_x: .7
+                pos_hint: {'y': .1, "center_x": .5}
+            MDTextField:
+                id: tipoLogin
+                hint_text: "Tipo"
                 mode: "rectangle"
                 size_hint_x: .7
                 pos_hint: {'y': .1, "center_x": .5}
@@ -37,5 +35,5 @@
                 size_hint_x: 0.6
                 center_x: 0.5
                 pos_hint: {'center_x': 0.5,'center_y': 0.1}
-                on_release: root.manager.current = ''
+                on_release: root.manager.current = app.login(usuarioLogin.text,senhaLogin.text,tipoLogin.text)
             

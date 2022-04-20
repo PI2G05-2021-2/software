@@ -1,5 +1,7 @@
 from collections import namedtuple
 from db.criadb import CriaDB
+from model.usuario import Usuario
+import win32api
 
 class UsuarioDB:
     criadb: CriaDB
@@ -17,9 +19,13 @@ class UsuarioDB:
         self.criadb.instanciaDB(
             "SELECT * FROM usuario WHERE login = %(login)s", {'login': login},False)
         dicionario = self.criadb.cursordb.fetchone()
-        self.criadb.fechaDB()
-        usuario = namedtuple('usuario', dicionario.keys())(*dicionario.values())
-        return usuario
+        if dicionario == None:
+            return None
+        else:
+            self.criadb.fechaDB()
+            usuario = namedtuple('usuario', dicionario.keys())(*dicionario.values())
+            usr = Usuario(usuario.login,usuario.senha,usuario.tipo)
+            return usr
     
     def atualizaUsuario(self,login,senha,tipo):
         val = (senha,tipo,login)
