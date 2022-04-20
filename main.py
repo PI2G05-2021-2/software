@@ -1,4 +1,3 @@
-
 import os
 from kivy.core.window import Window
 from kivymd.app import MDApp
@@ -8,11 +7,22 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.list import OneLineListItem,MDList,IconLeftWidget
 
+from controller.compradorcontroller import CompradorController
+from controller.lotecontroller import LoteController
+from controller.medicocontroller import MedicoController
 from controller.usuariocontroller import UsuarioController
+from controller.vendacontroller import VendaController
+
+from model.usuario import Usuario
 
 
 Window.size = (414, 736)
+
+if 'currentUsuario' not in globals():
+    currentUsuario : Usuario
 
 
 # main app class for kaki app with kivymd modules
@@ -28,7 +38,7 @@ class LiveApp(MDApp, App):
         os.path.join(os.getcwd(), "screens/screens_laboratorio/laboratorioscreen.kv"),
         os.path.join(os.getcwd(), "screens/screens_empresa/registroempresascreen.kv"),
         os.path.join(os.getcwd(), "screens/screens_empresa/homeempresascreen.kv"),
-        os.path.join(os.getcwd(), "screens/screens_acompanhar/acompanharscreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_acompanhar/acompanharscreen.kv")
     }
 
     # class to watch from *.py files
@@ -68,6 +78,7 @@ class LiveApp(MDApp, App):
                 popup.open()
             
             else:
+                self.currentUsuario = usr
                 if tipo == 'E':
                     return 'homeempresa'
                 elif tipo == 'L':
@@ -77,7 +88,36 @@ class LiveApp(MDApp, App):
                         content=Label(text='Dados incorretos'),
                         size_hint=(None, None), size=(200, 200))
                     popup.open()
+    
+    def novaVenda(self, nmComprador,telComprador,identComprador,crmSol,nmSol,telSol,cidComprador,enderecoVenda,loteVenda):
+        if nmComprador == '' or telComprador == '' or identComprador == '':
+            popup = Popup(title='Erro',
+                content=Label(text='Preencha todos os campos!'),
+                size_hint=(None, None), size=(210, 210))
+            popup.open()
+        elif crmSol == '' or nmSol == '' or telSol == '':
+            popup = Popup(title='Erro',
+                content=Label(text='Preencha todos os campos!'),
+                size_hint=(None, None), size=(210, 210))
+            popup.open()
+        elif cidComprador == '' or enderecoVenda == '' or loteVenda == '':
+            popup = Popup(title='Erro',
+                content=Label(text='Preencha todos os campos!'),
+                size_hint=(None, None), size=(210, 210))
+            popup.open()
+        else:
+            comprador = CompradorController().cadastrarComprador(identComprador,telComprador,nmComprador,cidComprador)
+            medico = MedicoController().cadastrarMedico(crmSol,telSol,nmSol)
+            lote = LoteController().mostrarLote(loteVenda)
+            venda = VendaController().cadastrarVenda(medico,comprador,enderecoVenda,self.currentUsuario,lote)
+            return 'homeempresa'
 
+    def getAllVendas(self,listaVendas):
+        vendas = VendaController().listarVenda()
+        for i in vendas:
+            item = OneLineListItem(text=str(i.comprador.nomeComprador))
+            #item.add_widget(IconLeftWidget(icon= "account-circle",theme_text_color= "Custom",text_color= self.theme_cls.primary_color))
+            listaVendas.add_widget(item)
 
 
 # finally, run the app

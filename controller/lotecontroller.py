@@ -21,7 +21,7 @@ class LoteController:
         db = LoteDB()
         db.deletaLote(idLote)
 
-    def mostrarLote(idLote):
+    def mostrarLote(self,idLote):
         db = LoteDB()
         lote = db.encontraLote(idLote)
                

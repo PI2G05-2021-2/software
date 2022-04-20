@@ -14,7 +14,7 @@ class VendaDB:
         self.criadb = CriaDB()        
 
     def insereVenda(self, venda):
-        query = "INSERT INTO venda (idVenda,fk_medico_idMedico,fk_comprador_idComprador,endereco,fk_Usuario_login,fk_Lote_idLote) VALUES(%s,%s,%s,%s,%s,%s)"
+        query = "INSERT INTO venda (idVenda,fk_medico_idMedico,fk_comprador_idComprador,endereco,fk_Usuario_login3,fk_Lote_idLote) VALUES(%s,%s,%s,%s,%s,%s)"
         val = (venda.idVenda,venda.medico.idMedico,venda.comprador.idComprador, venda.endereco,venda.usuario.login,venda.lote.idLote) 
         self.criadb.instanciaDB(query, val, True)
         self.criadb.fechaDB()

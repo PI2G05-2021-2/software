@@ -3,7 +3,10 @@ from model.venda import Venda
 
 
 class VendaController:
-    def cadastrarVenda(idVenda,medico,comprador,endereco,usuario,lote):
+    def cadastrarVenda(self,medico,comprador,endereco,usuario,lote):
+        todas = self.listarVenda()
+        ultima = todas.pop()
+        idVenda = int(ultima.idVenda) + 1
         venda = Venda(idVenda,medico,comprador,endereco,usuario,lote)
         
         db = VendaDB()
@@ -27,7 +30,7 @@ class VendaController:
                
         return venda
 
-    def listarVenda():
+    def listarVenda(self):
         db = VendaDB()
         vendas = db.retornaVendas()
         return vendas

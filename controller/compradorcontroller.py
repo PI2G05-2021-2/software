@@ -3,7 +3,10 @@ from model.comprador import Comprador
 
 
 class CompradorController:
-    def cadastrarComprador(idComprador,cpf,telefoneComprador,nomeComprador,cid):
+    def cadastrarComprador(self,cpf,telefoneComprador,nomeComprador,cid):
+        tdComprador = self.listarComprador()
+        ultimo = tdComprador.pop()
+        idComprador = int(ultimo.idComprador) + 1
         comprador = Comprador(idComprador,cpf,telefoneComprador,nomeComprador,cid)
         
         db = CompradorDB()
@@ -27,7 +30,7 @@ class CompradorController:
                
         return comprador
 
-    def listarComprador():
+    def listarComprador(self):
         db = CompradorDB()
         compradores = db.retornaCompradores()
         return compradores

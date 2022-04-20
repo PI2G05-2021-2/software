@@ -3,7 +3,10 @@ from model.medico import Medico
 
 
 class MedicoController:
-    def cadastrarMedico(idMedico,crm,telefoneMedico,nomeMedico):
+    def cadastrarMedico(self,crm,telefoneMedico,nomeMedico):
+        todos = self.listarMedico()
+        ultimo = todos.pop()
+        idMedico = int(ultimo.idMedico) + 1
         medico = Medico(idMedico,crm,telefoneMedico,nomeMedico)
         
         db = MedicoDB()
@@ -27,7 +30,7 @@ class MedicoController:
                
         return medico
 
-    def listarMedico():
+    def listarMedico(self):
         db = MedicoDB()
         medicos = db.retornaMedicos()
         return medicos
