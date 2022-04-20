@@ -13,13 +13,17 @@ Window.size = (414, 736)
 
 class LiveApp(MDApp, App):
     """ Hi Windows users """
-
     DEBUG = 1  # set this to 0 make live app not working
 
     # *.kv files to watch
     KV_FILES = {
         os.path.join(os.getcwd(), "screens/mainscreenmanager.kv"),
         os.path.join(os.getcwd(), "screens/screens_login/loginscreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_perfil/perfilscreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_laboratorio/laboratorioscreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_empresa/registroempresascreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_empresa/homeempresascreen.kv"),
+        os.path.join(os.getcwd(), "screens/screens_acompanhar/acompanharscreen.kv"),
     }
 
     # class to watch from *.py files

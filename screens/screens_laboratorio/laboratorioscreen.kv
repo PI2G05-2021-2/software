@@ -10,7 +10,7 @@
                 theme_text_color: "Custom"
                 text_color: app.theme_cls.primary_color 
                 pos_hint: {'x': .9}
-                on_release: sm.current = 'informacoes'
+                on_release: root.manager.current = 'informacoes'
             MDFillRoundFlatButton:
                 text: "PERFIS DE EXTRACAO"
                 size_hint_x: 0.6
@@ -19,7 +19,7 @@
             FloatLayout:
                 size: root.width, root.height
                 MDCard:
-                    on_release: sm.current = 'acompanhar'
+                    on_release: root.manager.current = 'acompanhar'
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
@@ -39,7 +39,7 @@
                         halign: "center"
                         size_hint_y: .3
                 MDCard:
-                    on_release: sm.current = 'acompanhar'
+                    on_release: root.manager.current = 'acompanhar'
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
@@ -59,7 +59,7 @@
                         halign: "center"
                         size_hint_y: .3
                 MDCard:
-                    on_release: sm.current = 'acompanhar'
+                    on_release: root.manager.current = 'acompanhar'
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
