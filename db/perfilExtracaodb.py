@@ -8,8 +8,8 @@ class PerfilExtracaoDB:
         self.criadb = CriaDB()
 
     def inserePerfilExtracao(self,perfil):
-        query = "INSERT INTO perfilExtracao (temperatura, tempo, potencia, velocidade) VALUES(%s,%s,%s,%s)"
-        val = (perfil.temperatura, perfil.tempo, perfil.potencia, perfil.velocidade) 
+        query = "INSERT INTO perfilExtracao (idPerfil, temperatura, tempo, potencia, velocidade) VALUES(%s,%s,%s,%s,%s)"
+        val = (perfil.idPerfil,perfil.temperatura, perfil.tempo, perfil.potencia, perfil.velocidade) 
         self.criadb.instanciaDB(query, val, True)
         self.criadb.fechaDB()
 
@@ -33,3 +33,18 @@ class PerfilExtracaoDB:
         perfilExtracao = namedtuple('perfilExtracao', perfil.keys())(*perfil.values())
 
         return perfilExtracao
+    
+    def retornaPerfis(self):
+        self.criadb.instanciaDB(
+            "SELECT * FROM perfilextracao",None,False
+        )
+        dicionario = self.criadb.cursordb.fetchall()
+        self.criadb.fechaDB()
+        perfis = []
+        i = 0
+        while i<len(dicionario):
+            perfil = namedtuple('perfil', dicionario[i].keys())(*dicionario[i].values())
+            perfis.append(perfil)
+            i = i + 1 
+        
+        return perfis

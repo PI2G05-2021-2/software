@@ -24,7 +24,8 @@
                         md_bg_color: app.theme_cls.primary_color
                         pos_hint:{"center_x":.5}
                         MDLabel:
-                            text: "50C"
+                            id: temperatura
+                            text: '00'
                             halign: 'center'
                 BoxLayout:
                     padding: 20
@@ -41,7 +42,8 @@
                         md_bg_color: app.theme_cls.primary_color
                         pos_hint:{"center_x":.5}
                         MDLabel:
-                            text: "50C"
+                            id: tempo
+                            text: '00'
                             halign: 'center'
                 BoxLayout:
                     padding: 20
@@ -58,7 +60,8 @@
                         md_bg_color: app.theme_cls.primary_color
                         pos_hint:{"center_x":.5}
                         MDLabel:
-                            text: "50C"
+                            id: potencia
+                            text: '00'
                             halign: 'center'
                 BoxLayout:
                     padding: 20
@@ -67,7 +70,6 @@
                     size_hint_y: None
                     height: self.minimum_height
                     MDLabel:
-                        
                         text: "VELOCIDADE DO MOTOR"
                         halign: 'center'
                     MDCard:
@@ -76,7 +78,8 @@
                         md_bg_color: app.theme_cls.primary_color
                         pos_hint:{"center_x":.5}
                         MDLabel:
-                            text: "50C"
+                            id: velocidade
+                            text: '00'
                             halign: 'center'
                 
         MDCard:
@@ -103,3 +106,4 @@
             icon: "plus"
             text: "ADICIONAR RELATORIO"
             pos_hint:{"center_y": .1, "center_x": .5}
+            on_release: app.iniciaRelatorio()
