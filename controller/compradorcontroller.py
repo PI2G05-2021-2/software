@@ -5,8 +5,11 @@ from model.comprador import Comprador
 class CompradorController:
     def cadastrarComprador(self,cpf,telefoneComprador,nomeComprador,cid):
         tdComprador = self.listarComprador()
-        ultimo = tdComprador.pop()
-        idComprador = int(ultimo.idComprador) + 1
+        if len(tdComprador) == 0:
+            idComprador = 0
+        else:
+            ultimo = tdComprador.pop()
+            idComprador = int(ultimo.idComprador) + 1
         comprador = Comprador(idComprador,cpf,telefoneComprador,nomeComprador,cid)
         
         db = CompradorDB()

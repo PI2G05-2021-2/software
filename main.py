@@ -31,13 +31,12 @@ from screens.mainscreenmanager import MainScreenManager
 Window.size = (414, 736)
 
 leitura = []
-
-if 'currentUsuario' not in globals():
-    currentUsuario : Usuario
+currentUsuario : Usuario
 
 # main app class for kaki app with kivymd modules
 class LiveApp(MDApp, App):
     """ Hi Windows users """
+    
     DEBUG = 1  # set this to 0 make live app not working
 
     # Caso não tenha o banco de dados
@@ -170,7 +169,7 @@ class LiveApp(MDApp, App):
                 dicionarioLeitura = ast.literal_eval(str(ultimaLeitura))
                 extracao = namedtuple('extracao', dicionarioLeitura.keys())(*dicionarioLeitura.values())
                 self.parent.ids.temperatura.text = extracao.TEMPERATURA
-    
+
     def mostraTempo(self,teste):
         while True:
             if len(self.leitura)>0:
@@ -196,6 +195,8 @@ class LiveApp(MDApp, App):
                 self.parent.ids.velocidade.text = extracao.VELOCIDADE
 
     def redireciona(self,perfil):
+        dadosPerfil = PerfilExtracaoController().mostrarPerfilExtracao(perfil)
+        lote = LoteController().cadastrarLote(dadosPerfil,self.currentUsuario)
         threading.Thread(target=self.iniciaWebSocket,args=perfil).start()
         threading.Thread(target=self.mostraTemperatura,args='None').start()
         threading.Thread(target=self.mostraTempo,args='None').start()
@@ -205,7 +206,7 @@ class LiveApp(MDApp, App):
 
     def iniciaRelatorio(self):
         if len(leitura)>0:
-            arq = open('teste.txt','wb') #abrir o arquivo para gravação - o "b" significa que o arquivo é binário
+            arq = open('relatorio.txt','wb') #abrir o arquivo para gravação - o "b" significa que o arquivo é binário
             pickle.dump(leitura,arq) #Grava uma stream do objeto "dic" para o arquivo.
             arq.close() #fechar o arquivo
 

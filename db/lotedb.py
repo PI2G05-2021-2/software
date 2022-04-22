@@ -11,7 +11,7 @@ class LoteDB:
         self.criadb = CriaDB()
 
     def insereLote(self, lote):
-        query = "INSERT INTO lote (idLote,fk_PerfilExtracao_idPerfil,fk_Usuario_login) VALUES(%s,%s,%s)"
+        query = "INSERT INTO lote (idLote,fk_PerfilExtracao_idPerfil,fk_Usuario_login2) VALUES(%s,%s,%s)"
         val = (lote.idLote,lote.perfil.idPerfil,lote.usuario.login) 
         self.criadb.instanciaDB(query, val, True)
         self.criadb.fechaDB()
@@ -28,7 +28,7 @@ class LoteDB:
     
     def atualizaLote(self,idLote, perfil, usuario):
         val = (perfil.idPerfil, usuario.login,idLote)
-        self.criadb.instanciaDB("UPDATE lote SET fk_PerfilExtracao_idPerfil = %s, fk_Usuario_login = %s WHERE idLote = %s",val,True)
+        self.criadb.instanciaDB("UPDATE lote SET fk_PerfilExtracao_idPerfil = %s, fk_Usuario_login2 = %s WHERE idLote = %s",val,True)
         self.criadb.fechaDB()
 
     def deletaLote(self,idLote):
@@ -45,8 +45,8 @@ class LoteDB:
         i = 0
         while i<len(dicionario):
             lotetemp = namedtuple('lotetemp', dicionario[i].keys())(*dicionario[i].values())
-            lote = Lote(lotetemp.idLote,PerfilExtracaoDB.encontraPerfilExtracao(lotetemp.fk_PerfilExtracao_idPerfil),
-                    UsuarioDB.encontraUsuario(lotetemp.fk_Usuario_login))
+            lote = Lote(lotetemp.idLote,PerfilExtracaoDB().encontraPerfilExtracao(lotetemp.fk_PerfilExtracao_idPerfil),
+                    UsuarioDB().encontraUsuario(lotetemp.fk_Usuario_login2))
             lotes.append(lote)
             i = i + 1 
         

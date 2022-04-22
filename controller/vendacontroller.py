@@ -5,8 +5,11 @@ from model.venda import Venda
 class VendaController:
     def cadastrarVenda(self,medico,comprador,endereco,usuario,lote):
         todas = self.listarVenda()
-        ultima = todas.pop()
-        idVenda = int(ultima.idVenda) + 1
+        if len(todas) == 0:
+            idVenda = 0
+        else:
+            ultima = todas.pop()
+            idVenda = int(ultima.idVenda) + 1
         venda = Venda(idVenda,medico,comprador,endereco,usuario,lote)
         
         db = VendaDB()

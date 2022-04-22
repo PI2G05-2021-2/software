@@ -5,8 +5,11 @@ from model.medico import Medico
 class MedicoController:
     def cadastrarMedico(self,crm,telefoneMedico,nomeMedico):
         todos = self.listarMedico()
-        ultimo = todos.pop()
-        idMedico = int(ultimo.idMedico) + 1
+        if len(todos) == 0:
+            idMedico = 0
+        else:
+            ultimo = todos.pop()
+            idMedico = int(ultimo.idMedico) + 1
         medico = Medico(idMedico,crm,telefoneMedico,nomeMedico)
         
         db = MedicoDB()

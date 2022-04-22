@@ -17,11 +17,11 @@ class PerfilExtracaoController:
 
         return perfil
 
-    def mostrarPerfilExtracao(idPerfil):
+    def mostrarPerfilExtracao(self,idPerfil):
         db = PerfilExtracaoDB()
         
-        lista = db.encontraPerfilExtracao(idPerfil)
-        perfil = PerfilExtracao(lista[0],float(lista[1]),lista[2],float(lista[3]),float(lista[4]))
+        perfil = db.encontraPerfilExtracao(idPerfil)
+        #perfil = PerfilExtracao(lista[0],float(lista[1]),lista[2],float(lista[3]),float(lista[4]))
         
         return perfil
     

@@ -3,12 +3,16 @@ from model.lote import Lote
 
 
 class LoteController:
-    def cadastrarLote(idLote, perfil, usuario):
-        lote = Lote(idLote, perfil, usuario)
-        
+    def cadastrarLote(self,perfil, usuario):
         db = LoteDB()
+        lista = db.retornaLotes()
+        if len(lista) == 0:
+            idLote = 0
+        else:
+            ultimo = lista.pop()
+            idLote = int(ultimo.idLote) + 1
+        lote = Lote(idLote, perfil, usuario)
         db.insereLote(lote)
-
         return lote
 
     def editarLote(idLote, perfil, usuario):
