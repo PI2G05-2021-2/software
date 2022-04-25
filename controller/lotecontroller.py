@@ -31,7 +31,7 @@ class LoteController:
                
         return lote
 
-    def listarLote():
+    def listarLote(self):
         db = LoteDB()
         lotes = db.retornaLotes()
         return lotes

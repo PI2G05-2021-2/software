@@ -19,7 +19,7 @@
             FloatLayout:
                 size: root.width, root.height
                 MDCard:
-                    on_release: root.manager.current = app.redireciona('1')
+                    on_release: root.manager.current = app.redireciona('0')
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
@@ -39,7 +39,7 @@
                         halign: "center"
                         size_hint_y: .3
                 MDCard:
-                    on_release: root.manager.current = app.redireciona('2')
+                    on_release: root.manager.current = app.redireciona('1')
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
@@ -59,7 +59,7 @@
                         halign: "center"
                         size_hint_y: .3
                 MDCard:
-                    on_release: root.manager.current = app.redireciona('3')
+                    on_release: root.manager.current = app.redireciona('2')
                     ripple_behavior: True
                     orientation: "vertical"
                     size_hint: None, None
