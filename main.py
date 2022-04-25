@@ -168,12 +168,11 @@ class LiveApp(MDApp, App):
             conexao.send(perfil.encode())
             while True:
                 data = conexao.recv(200)
-                self.leitura.append(str(data.decode()))
-                if data.decode() == '':
+                if not data:
+                    conexao.close()
                     break
-            fechou = conexao.close()
-            if fechou == None:
-                break
+                else:
+                    self.leitura.append(str(data.decode()))
     
     def mostraStatus(self, *args):
         if len(self.leitura)>0:
